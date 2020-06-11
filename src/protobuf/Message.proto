@@ -1,0 +1,43 @@
+syntax= "proto3";
+//永远不要修改生成的代码，只能修改这里的代码
+package com.im.server.msg.pojo;
+
+option optimize_for = SPEED;//加快解析速度，详细可以去官网查
+option java_package="com.im.server.msg.pojo";
+option java_outer_classname="MyDataInfo1";
+message MyMessage{
+    //定义一个枚举类型DataType
+    enum DataType{
+        oneType=0;
+        groupTypeout=1;
+    }
+    //用data_type来标识传的是哪个枚举类型
+    DataType data_type=1;
+
+    //表示每次枚举类型最多只能出现三个中的一个，节省了空间
+    oneof dataBody{
+        OneSession oneSession=2;
+        GroupSession groupSession=3;
+    }
+
+}
+message OneSession{
+    int32 id=1;
+    string name=2;
+    string desc=3;
+    string msg=4;
+    string msg_md5=5;
+    string timestamp=6;
+    int32 target_id=7;
+}
+
+message GroupSession{
+    int32 id=1;
+    string name=2;
+    string desc=3;
+    string msg=4;
+    string msg_md5=5;
+    string timestamp=6;
+    int32 target_group_id=7;
+}
+
