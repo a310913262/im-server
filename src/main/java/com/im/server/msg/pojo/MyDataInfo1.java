@@ -1221,10 +1221,10 @@ public final class MyDataInfo1 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 id = 1;</code>
-     * @return The id.
+     * <code>int32 source_id = 1;</code>
+     * @return The sourceId.
      */
-    int getId();
+    int getSourceId();
 
     /**
      * <code>string name = 2;</code>
@@ -1291,6 +1291,16 @@ public final class MyDataInfo1 {
      * @return The targetId.
      */
     int getTargetId();
+
+    /**
+     * <pre>
+     *msg_status = 1 发送，msg_status=2 接收
+     * </pre>
+     *
+     * <code>int32 msg_status = 8;</code>
+     * @return The msgStatus.
+     */
+    int getMsgStatus();
   }
   /**
    * Protobuf type {@code com.im.server.msg.pojo.OneSession}
@@ -1344,7 +1354,7 @@ public final class MyDataInfo1 {
               break;
             case 8: {
 
-              id_ = input.readInt32();
+              sourceId_ = input.readInt32();
               break;
             }
             case 18: {
@@ -1382,6 +1392,11 @@ public final class MyDataInfo1 {
               targetId_ = input.readInt32();
               break;
             }
+            case 64: {
+
+              msgStatus_ = input.readInt32();
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -1414,15 +1429,15 @@ public final class MyDataInfo1 {
               com.im.server.msg.pojo.MyDataInfo1.OneSession.class, com.im.server.msg.pojo.MyDataInfo1.OneSession.Builder.class);
     }
 
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
+    public static final int SOURCE_ID_FIELD_NUMBER = 1;
+    private int sourceId_;
     /**
-     * <code>int32 id = 1;</code>
-     * @return The id.
+     * <code>int32 source_id = 1;</code>
+     * @return The sourceId.
      */
     @java.lang.Override
-    public int getId() {
-      return id_;
+    public int getSourceId() {
+      return sourceId_;
     }
 
     public static final int NAME_FIELD_NUMBER = 2;
@@ -1626,6 +1641,21 @@ public final class MyDataInfo1 {
       return targetId_;
     }
 
+    public static final int MSG_STATUS_FIELD_NUMBER = 8;
+    private int msgStatus_;
+    /**
+     * <pre>
+     *msg_status = 1 发送，msg_status=2 接收
+     * </pre>
+     *
+     * <code>int32 msg_status = 8;</code>
+     * @return The msgStatus.
+     */
+    @java.lang.Override
+    public int getMsgStatus() {
+      return msgStatus_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1640,8 +1670,8 @@ public final class MyDataInfo1 {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (id_ != 0) {
-        output.writeInt32(1, id_);
+      if (sourceId_ != 0) {
+        output.writeInt32(1, sourceId_);
       }
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
@@ -1661,6 +1691,9 @@ public final class MyDataInfo1 {
       if (targetId_ != 0) {
         output.writeInt32(7, targetId_);
       }
+      if (msgStatus_ != 0) {
+        output.writeInt32(8, msgStatus_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1670,9 +1703,9 @@ public final class MyDataInfo1 {
       if (size != -1) return size;
 
       size = 0;
-      if (id_ != 0) {
+      if (sourceId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
+          .computeInt32Size(1, sourceId_);
       }
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
@@ -1693,6 +1726,10 @@ public final class MyDataInfo1 {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, targetId_);
       }
+      if (msgStatus_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, msgStatus_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1708,8 +1745,8 @@ public final class MyDataInfo1 {
       }
       com.im.server.msg.pojo.MyDataInfo1.OneSession other = (com.im.server.msg.pojo.MyDataInfo1.OneSession) obj;
 
-      if (getId()
-          != other.getId()) return false;
+      if (getSourceId()
+          != other.getSourceId()) return false;
       if (!getName()
           .equals(other.getName())) return false;
       if (!getDesc()
@@ -1722,6 +1759,8 @@ public final class MyDataInfo1 {
           .equals(other.getTimestamp())) return false;
       if (getTargetId()
           != other.getTargetId()) return false;
+      if (getMsgStatus()
+          != other.getMsgStatus()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1733,8 +1772,8 @@ public final class MyDataInfo1 {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId();
+      hash = (37 * hash) + SOURCE_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getSourceId();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + DESC_FIELD_NUMBER;
@@ -1747,6 +1786,8 @@ public final class MyDataInfo1 {
       hash = (53 * hash) + getTimestamp().hashCode();
       hash = (37 * hash) + TARGET_ID_FIELD_NUMBER;
       hash = (53 * hash) + getTargetId();
+      hash = (37 * hash) + MSG_STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getMsgStatus();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1880,7 +1921,7 @@ public final class MyDataInfo1 {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = 0;
+        sourceId_ = 0;
 
         name_ = "";
 
@@ -1893,6 +1934,8 @@ public final class MyDataInfo1 {
         timestamp_ = "";
 
         targetId_ = 0;
+
+        msgStatus_ = 0;
 
         return this;
       }
@@ -1920,13 +1963,14 @@ public final class MyDataInfo1 {
       @java.lang.Override
       public com.im.server.msg.pojo.MyDataInfo1.OneSession buildPartial() {
         com.im.server.msg.pojo.MyDataInfo1.OneSession result = new com.im.server.msg.pojo.MyDataInfo1.OneSession(this);
-        result.id_ = id_;
+        result.sourceId_ = sourceId_;
         result.name_ = name_;
         result.desc_ = desc_;
         result.msg_ = msg_;
         result.msgMd5_ = msgMd5_;
         result.timestamp_ = timestamp_;
         result.targetId_ = targetId_;
+        result.msgStatus_ = msgStatus_;
         onBuilt();
         return result;
       }
@@ -1975,8 +2019,8 @@ public final class MyDataInfo1 {
 
       public Builder mergeFrom(com.im.server.msg.pojo.MyDataInfo1.OneSession other) {
         if (other == com.im.server.msg.pojo.MyDataInfo1.OneSession.getDefaultInstance()) return this;
-        if (other.getId() != 0) {
-          setId(other.getId());
+        if (other.getSourceId() != 0) {
+          setSourceId(other.getSourceId());
         }
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
@@ -2000,6 +2044,9 @@ public final class MyDataInfo1 {
         }
         if (other.getTargetId() != 0) {
           setTargetId(other.getTargetId());
+        }
+        if (other.getMsgStatus() != 0) {
+          setMsgStatus(other.getMsgStatus());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2030,33 +2077,33 @@ public final class MyDataInfo1 {
         return this;
       }
 
-      private int id_ ;
+      private int sourceId_ ;
       /**
-       * <code>int32 id = 1;</code>
-       * @return The id.
+       * <code>int32 source_id = 1;</code>
+       * @return The sourceId.
        */
       @java.lang.Override
-      public int getId() {
-        return id_;
+      public int getSourceId() {
+        return sourceId_;
       }
       /**
-       * <code>int32 id = 1;</code>
-       * @param value The id to set.
+       * <code>int32 source_id = 1;</code>
+       * @param value The sourceId to set.
        * @return This builder for chaining.
        */
-      public Builder setId(int value) {
+      public Builder setSourceId(int value) {
         
-        id_ = value;
+        sourceId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 id = 1;</code>
+       * <code>int32 source_id = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearId() {
+      public Builder clearSourceId() {
         
-        id_ = 0;
+        sourceId_ = 0;
         onChanged();
         return this;
       }
@@ -2471,6 +2518,49 @@ public final class MyDataInfo1 {
         onChanged();
         return this;
       }
+
+      private int msgStatus_ ;
+      /**
+       * <pre>
+       *msg_status = 1 发送，msg_status=2 接收
+       * </pre>
+       *
+       * <code>int32 msg_status = 8;</code>
+       * @return The msgStatus.
+       */
+      @java.lang.Override
+      public int getMsgStatus() {
+        return msgStatus_;
+      }
+      /**
+       * <pre>
+       *msg_status = 1 发送，msg_status=2 接收
+       * </pre>
+       *
+       * <code>int32 msg_status = 8;</code>
+       * @param value The msgStatus to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMsgStatus(int value) {
+        
+        msgStatus_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *msg_status = 1 发送，msg_status=2 接收
+       * </pre>
+       *
+       * <code>int32 msg_status = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMsgStatus() {
+        
+        msgStatus_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2529,10 +2619,10 @@ public final class MyDataInfo1 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 id = 1;</code>
-     * @return The id.
+     * <code>int32 source_id = 1;</code>
+     * @return The sourceId.
      */
-    int getId();
+    int getSourceId();
 
     /**
      * <code>string name = 2;</code>
@@ -2599,6 +2689,16 @@ public final class MyDataInfo1 {
      * @return The targetGroupId.
      */
     int getTargetGroupId();
+
+    /**
+     * <pre>
+     *msg_status = 1 发送，msg_status=2 接收
+     * </pre>
+     *
+     * <code>int32 msg_status = 8;</code>
+     * @return The msgStatus.
+     */
+    int getMsgStatus();
   }
   /**
    * Protobuf type {@code com.im.server.msg.pojo.GroupSession}
@@ -2652,7 +2752,7 @@ public final class MyDataInfo1 {
               break;
             case 8: {
 
-              id_ = input.readInt32();
+              sourceId_ = input.readInt32();
               break;
             }
             case 18: {
@@ -2690,6 +2790,11 @@ public final class MyDataInfo1 {
               targetGroupId_ = input.readInt32();
               break;
             }
+            case 64: {
+
+              msgStatus_ = input.readInt32();
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -2722,15 +2827,15 @@ public final class MyDataInfo1 {
               com.im.server.msg.pojo.MyDataInfo1.GroupSession.class, com.im.server.msg.pojo.MyDataInfo1.GroupSession.Builder.class);
     }
 
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
+    public static final int SOURCE_ID_FIELD_NUMBER = 1;
+    private int sourceId_;
     /**
-     * <code>int32 id = 1;</code>
-     * @return The id.
+     * <code>int32 source_id = 1;</code>
+     * @return The sourceId.
      */
     @java.lang.Override
-    public int getId() {
-      return id_;
+    public int getSourceId() {
+      return sourceId_;
     }
 
     public static final int NAME_FIELD_NUMBER = 2;
@@ -2934,6 +3039,21 @@ public final class MyDataInfo1 {
       return targetGroupId_;
     }
 
+    public static final int MSG_STATUS_FIELD_NUMBER = 8;
+    private int msgStatus_;
+    /**
+     * <pre>
+     *msg_status = 1 发送，msg_status=2 接收
+     * </pre>
+     *
+     * <code>int32 msg_status = 8;</code>
+     * @return The msgStatus.
+     */
+    @java.lang.Override
+    public int getMsgStatus() {
+      return msgStatus_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2948,8 +3068,8 @@ public final class MyDataInfo1 {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (id_ != 0) {
-        output.writeInt32(1, id_);
+      if (sourceId_ != 0) {
+        output.writeInt32(1, sourceId_);
       }
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
@@ -2969,6 +3089,9 @@ public final class MyDataInfo1 {
       if (targetGroupId_ != 0) {
         output.writeInt32(7, targetGroupId_);
       }
+      if (msgStatus_ != 0) {
+        output.writeInt32(8, msgStatus_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2978,9 +3101,9 @@ public final class MyDataInfo1 {
       if (size != -1) return size;
 
       size = 0;
-      if (id_ != 0) {
+      if (sourceId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
+          .computeInt32Size(1, sourceId_);
       }
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
@@ -3001,6 +3124,10 @@ public final class MyDataInfo1 {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, targetGroupId_);
       }
+      if (msgStatus_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, msgStatus_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -3016,8 +3143,8 @@ public final class MyDataInfo1 {
       }
       com.im.server.msg.pojo.MyDataInfo1.GroupSession other = (com.im.server.msg.pojo.MyDataInfo1.GroupSession) obj;
 
-      if (getId()
-          != other.getId()) return false;
+      if (getSourceId()
+          != other.getSourceId()) return false;
       if (!getName()
           .equals(other.getName())) return false;
       if (!getDesc()
@@ -3030,6 +3157,8 @@ public final class MyDataInfo1 {
           .equals(other.getTimestamp())) return false;
       if (getTargetGroupId()
           != other.getTargetGroupId()) return false;
+      if (getMsgStatus()
+          != other.getMsgStatus()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3041,8 +3170,8 @@ public final class MyDataInfo1 {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId();
+      hash = (37 * hash) + SOURCE_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getSourceId();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + DESC_FIELD_NUMBER;
@@ -3055,6 +3184,8 @@ public final class MyDataInfo1 {
       hash = (53 * hash) + getTimestamp().hashCode();
       hash = (37 * hash) + TARGET_GROUP_ID_FIELD_NUMBER;
       hash = (53 * hash) + getTargetGroupId();
+      hash = (37 * hash) + MSG_STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getMsgStatus();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3188,7 +3319,7 @@ public final class MyDataInfo1 {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = 0;
+        sourceId_ = 0;
 
         name_ = "";
 
@@ -3201,6 +3332,8 @@ public final class MyDataInfo1 {
         timestamp_ = "";
 
         targetGroupId_ = 0;
+
+        msgStatus_ = 0;
 
         return this;
       }
@@ -3228,13 +3361,14 @@ public final class MyDataInfo1 {
       @java.lang.Override
       public com.im.server.msg.pojo.MyDataInfo1.GroupSession buildPartial() {
         com.im.server.msg.pojo.MyDataInfo1.GroupSession result = new com.im.server.msg.pojo.MyDataInfo1.GroupSession(this);
-        result.id_ = id_;
+        result.sourceId_ = sourceId_;
         result.name_ = name_;
         result.desc_ = desc_;
         result.msg_ = msg_;
         result.msgMd5_ = msgMd5_;
         result.timestamp_ = timestamp_;
         result.targetGroupId_ = targetGroupId_;
+        result.msgStatus_ = msgStatus_;
         onBuilt();
         return result;
       }
@@ -3283,8 +3417,8 @@ public final class MyDataInfo1 {
 
       public Builder mergeFrom(com.im.server.msg.pojo.MyDataInfo1.GroupSession other) {
         if (other == com.im.server.msg.pojo.MyDataInfo1.GroupSession.getDefaultInstance()) return this;
-        if (other.getId() != 0) {
-          setId(other.getId());
+        if (other.getSourceId() != 0) {
+          setSourceId(other.getSourceId());
         }
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
@@ -3308,6 +3442,9 @@ public final class MyDataInfo1 {
         }
         if (other.getTargetGroupId() != 0) {
           setTargetGroupId(other.getTargetGroupId());
+        }
+        if (other.getMsgStatus() != 0) {
+          setMsgStatus(other.getMsgStatus());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3338,33 +3475,33 @@ public final class MyDataInfo1 {
         return this;
       }
 
-      private int id_ ;
+      private int sourceId_ ;
       /**
-       * <code>int32 id = 1;</code>
-       * @return The id.
+       * <code>int32 source_id = 1;</code>
+       * @return The sourceId.
        */
       @java.lang.Override
-      public int getId() {
-        return id_;
+      public int getSourceId() {
+        return sourceId_;
       }
       /**
-       * <code>int32 id = 1;</code>
-       * @param value The id to set.
+       * <code>int32 source_id = 1;</code>
+       * @param value The sourceId to set.
        * @return This builder for chaining.
        */
-      public Builder setId(int value) {
+      public Builder setSourceId(int value) {
         
-        id_ = value;
+        sourceId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 id = 1;</code>
+       * <code>int32 source_id = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearId() {
+      public Builder clearSourceId() {
         
-        id_ = 0;
+        sourceId_ = 0;
         onChanged();
         return this;
       }
@@ -3779,6 +3916,49 @@ public final class MyDataInfo1 {
         onChanged();
         return this;
       }
+
+      private int msgStatus_ ;
+      /**
+       * <pre>
+       *msg_status = 1 发送，msg_status=2 接收
+       * </pre>
+       *
+       * <code>int32 msg_status = 8;</code>
+       * @return The msgStatus.
+       */
+      @java.lang.Override
+      public int getMsgStatus() {
+        return msgStatus_;
+      }
+      /**
+       * <pre>
+       *msg_status = 1 发送，msg_status=2 接收
+       * </pre>
+       *
+       * <code>int32 msg_status = 8;</code>
+       * @param value The msgStatus to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMsgStatus(int value) {
+        
+        msgStatus_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *msg_status = 1 发送，msg_status=2 接收
+       * </pre>
+       *
+       * <code>int32 msg_status = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMsgStatus() {
+        
+        msgStatus_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3863,14 +4043,16 @@ public final class MyDataInfo1 {
       "o.OneSessionH\000\022<\n\014groupSession\030\003 \001(\0132$.c" +
       "om.im.server.msg.pojo.GroupSessionH\000\")\n\010" +
       "DataType\022\013\n\007oneType\020\000\022\020\n\014groupTypeout\020\001B" +
-      "\n\n\010dataBody\"x\n\nOneSession\022\n\n\002id\030\001 \001(\005\022\014\n" +
+      "\n\n\010dataBody\"\223\001\n\nOneSession\022\021\n\tsource_id\030" +
+      "\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004desc\030\003 \001(\t\022\013\n\003msg" +
+      "\030\004 \001(\t\022\017\n\007msg_md5\030\005 \001(\t\022\021\n\ttimestamp\030\006 \001" +
+      "(\t\022\021\n\ttarget_id\030\007 \001(\005\022\022\n\nmsg_status\030\010 \001(" +
+      "\005\"\233\001\n\014GroupSession\022\021\n\tsource_id\030\001 \001(\005\022\014\n" +
       "\004name\030\002 \001(\t\022\014\n\004desc\030\003 \001(\t\022\013\n\003msg\030\004 \001(\t\022\017" +
-      "\n\007msg_md5\030\005 \001(\t\022\021\n\ttimestamp\030\006 \001(\t\022\021\n\tta" +
-      "rget_id\030\007 \001(\005\"\200\001\n\014GroupSession\022\n\n\002id\030\001 \001" +
-      "(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004desc\030\003 \001(\t\022\013\n\003msg\030\004 " +
-      "\001(\t\022\017\n\007msg_md5\030\005 \001(\t\022\021\n\ttimestamp\030\006 \001(\t\022" +
-      "\027\n\017target_group_id\030\007 \001(\005B\'\n\026com.im.serve" +
-      "r.msg.pojoB\013MyDataInfo1H\001b\006proto3"
+      "\n\007msg_md5\030\005 \001(\t\022\021\n\ttimestamp\030\006 \001(\t\022\027\n\017ta" +
+      "rget_group_id\030\007 \001(\005\022\022\n\nmsg_status\030\010 \001(\005B" +
+      "\'\n\026com.im.server.msg.pojoB\013MyDataInfo1H\001" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3887,13 +4069,13 @@ public final class MyDataInfo1 {
     internal_static_com_im_server_msg_pojo_OneSession_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_im_server_msg_pojo_OneSession_descriptor,
-        new java.lang.String[] { "Id", "Name", "Desc", "Msg", "MsgMd5", "Timestamp", "TargetId", });
+        new java.lang.String[] { "SourceId", "Name", "Desc", "Msg", "MsgMd5", "Timestamp", "TargetId", "MsgStatus", });
     internal_static_com_im_server_msg_pojo_GroupSession_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_com_im_server_msg_pojo_GroupSession_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_im_server_msg_pojo_GroupSession_descriptor,
-        new java.lang.String[] { "Id", "Name", "Desc", "Msg", "MsgMd5", "Timestamp", "TargetGroupId", });
+        new java.lang.String[] { "SourceId", "Name", "Desc", "Msg", "MsgMd5", "Timestamp", "TargetGroupId", "MsgStatus", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

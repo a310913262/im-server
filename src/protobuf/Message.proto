@@ -22,22 +22,26 @@ message MyMessage{
 
 }
 message OneSession{
-    int32 id=1;
+    int32 source_id=1;
     string name=2;
     string desc=3;
     string msg=4;
     string msg_md5=5;
     string timestamp=6;
     int32 target_id=7;
+    //msg_status = 1 发送，msg_status=2 接收
+    int32 msg_status=8;
 }
 
 message GroupSession{
-    int32 id=1;
+    int32 source_id=1;
     string name=2;
     string desc=3;
     string msg=4;
     string msg_md5=5;
     string timestamp=6;
     int32 target_group_id=7;
+    //msg_status = 1 发送，msg_status=2 接收
+    int32 msg_status=8;
 }
 
